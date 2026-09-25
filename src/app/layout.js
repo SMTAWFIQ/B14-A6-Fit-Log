@@ -3,7 +3,7 @@ import "./globals.css";
 
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import FitlogProvider from "@/Context/FitlogContext";
+import FitlogProvider from "../Context/FitlogContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
