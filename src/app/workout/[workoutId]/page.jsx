@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { CalendarPlus, Bookmark } from "lucide-react";
+import AddToTodaysPlanButton from "../../../Components/workouDetails/AddToTodaysPlanButton";
+import SaveForLaterButton from "../../../Components/workouDetails/SaveForLaterButton";
+
 
 const getWorkoutData = async (workoutId) => {
   const res = await fetch(
@@ -74,15 +76,9 @@ const WorkoutDetailsPage = async ({ params }) => {
 
         {/* CTA buttons */}
         <div className="flex gap-4 mt-8">
-          <button className="flex items-center gap-2 bg-custom text-black font-bold px-5 py-3 rounded-full hover:opacity-90 transition">
-            <CalendarPlus size={18} />
-            Add to today's plan
-          </button>
+          <AddToTodaysPlanButton workout={workout}></AddToTodaysPlanButton>
 
-          <button className="flex items-center gap-2 border border-neutral-700 text-white font-bold px-5 py-3 rounded-full hover:border-accent transition">
-            <Bookmark size={18} />
-            Save for later
-          </button>
+          <SaveForLaterButton></SaveForLaterButton>
         </div>
       </div>
     </div>

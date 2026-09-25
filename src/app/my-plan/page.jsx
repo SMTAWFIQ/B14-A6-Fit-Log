@@ -1,6 +1,11 @@
-import React from 'react';
+'use client'
+import { FitlogContext } from '../../Context/FitlogContext';
+import React, { useContext } from 'react';
 
-const page = () => {
+const MyPlanPage = () => {
+    const {myPlan, setMyPlan} = useContext(FitlogContext)
+    console.log(myPlan, "myplan");
+
     return (
         <div>
             
@@ -8,4 +13,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default MyPlanPage;

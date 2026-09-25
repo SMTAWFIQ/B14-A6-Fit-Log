@@ -1,11 +1,11 @@
 'use client'
 import React, { createContext, useState } from 'react';
 
-    const FitlogContext = createContext({})
+   export const FitlogContext = createContext({})
 
 const FitlogProvider = ({children}) => {
-    const {myPlan, setMyPlan} = useState([])
-    const {savedWorkout, setSavedWorkout} = useState([])
+    const [myPlan, setMyPlan] = useState([])
+    const [savedWorkout, setSavedWorkout] = useState([])
 
     const sharedData = {
         myPlan, 
