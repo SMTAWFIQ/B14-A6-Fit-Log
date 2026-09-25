@@ -1,9 +1,9 @@
-
 import { Geist, Geist_Mono, Oswald, Inter } from "next/font/google";
 import "./globals.css";
 
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
+import FitlogProvider from "@/Context/FitlogContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,11 +38,12 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar/>
-        {children}
-        <Footer />
+        <FitlogProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </FitlogProvider>
       </body>
     </html>
   );
 }
-
