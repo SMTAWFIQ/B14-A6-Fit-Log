@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import logo from "../../assets/logo.png";
+
+import logo from "../../../assets/logo.png";
+
+import PlanButton from "./PlanButton";
+import SaveButton from "./SaveButton";
 
 const Navbar = () => {
+  
   const links = (
     <>
       <li>
@@ -53,13 +57,9 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-        <Link href="/plan" className="btn">
-          Plan
-        </Link>
-        <Link href="/plan" className="btn">
-          Saved
-        </Link>
+      <div className="flex items-center gap-4 navbar-end">
+        <PlanButton></PlanButton>
+        <SaveButton></SaveButton>
       </div>
     </div>
   </nav>

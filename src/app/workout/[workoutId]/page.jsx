@@ -78,7 +78,7 @@ const WorkoutDetailsPage = async ({ params }) => {
         <div className="flex gap-4 mt-8">
           <AddToTodaysPlanButton workout={workout}></AddToTodaysPlanButton>
 
-          <SaveForLaterButton></SaveForLaterButton>
+          <SaveForLaterButton workout={workout}></SaveForLaterButton>
         </div>
       </div>
     </div>

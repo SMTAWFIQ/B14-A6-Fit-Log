@@ -2,6 +2,7 @@
 import { FitlogContext } from "../../Context/FitlogContext";
 import { CalendarPlus } from "lucide-react";
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 
 const AddToTodaysPlanButton = ({ workout }) => {
   const { myPlan, setMyPlan } = useContext(FitlogContext);
@@ -12,15 +13,15 @@ const AddToTodaysPlanButton = ({ workout }) => {
     if (alreadyAdded) return;
 
     setMyPlan([...myPlan, workout]);
-
-    alert(`${workout.name} Added to today's plan`);
+    
+    toast.success(`${workout.name} Added to today's plan`);
   };
 
   return (
     <button
       onClick={handleMyPlan}
       disabled={alreadyAdded}
-      className="flex items-center gap-2 bg-custom text-black font-bold px-5 py-3 rounded-full hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+      className="flex items-center gap-2 bg-custom hover:cursor-pointer text-black font-bold px-5 py-3 rounded-full hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <CalendarPlus size={18} />
 

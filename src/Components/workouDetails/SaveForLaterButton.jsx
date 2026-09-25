@@ -1,30 +1,29 @@
-import { Bookmark } from "lucide-react";
-
-
-
 "use client";
+import { Bookmark } from "lucide-react";
 import { FitlogContext } from "../../Context/FitlogContext";
-
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 
-const AddToTodaysPlanButton = ({ workout }) => {
-  const { myPlan, setMyPlan } = useContext(FitlogContext);
 
-  const alreadyAdded = myPlan.find((w) => w.id === workout.id);
+const SaveForLaterButton = ({ workout }) => {
+  const { savedWorkout, setSavedWorkout } = useContext(FitlogContext);
 
-  const handleMyPlan = () => {
+  const alreadyAdded = savedWorkout.find((w) => w.id === workout.id);
+
+  const handleSavedWorkout = () => {
+    console.log("save btn trigerred", workout);
     if (alreadyAdded) return;
 
-    setMyPlan([...myPlan, workout]);
-
-    alert(`${workout.name} Added to today's plan`);
+    setSavedWorkout([...savedWorkout, workout]);
+    
+    toast.success(`${workout.name} Added to Saved Workout`);
   };
 
   return (
     <button
-      onClick={handleMyPlan}
+      onClick={handleSavedWorkout}
       disabled={alreadyAdded}
-      className="flex items-center gap-2 border border-neutral-700 text-white font-bold px-5 py-3 rounded-full hover:border-accent transition"
+      className="flex items-center gap-2 border border-neutral-700 text-white font-bold px-5 py-3 rounded-full hover:border-white hover:cursor-pointer transition disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <Bookmark size={18} />
 
@@ -33,4 +32,4 @@ const AddToTodaysPlanButton = ({ workout }) => {
   );
 };
 
-export default AddToTodaysPlanButton;
+export default SaveForLaterButton;

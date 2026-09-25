@@ -2,8 +2,9 @@ import { Geist, Geist_Mono, Oswald, Inter } from "next/font/google";
 import "./globals.css";
 
 import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 import FitlogProvider from "../Context/FitlogContext";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <Footer />
+          <ToastContainer />
         </FitlogProvider>
       </body>
     </html>
