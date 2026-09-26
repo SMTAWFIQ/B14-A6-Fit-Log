@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const LoadingState = () => {
-    return (
-        <div>
-            Loadig Workouts...
-        </div>
-    );
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <span className="loading loading-spinner text-warning"></span>
+    </div>
+  );
 };
 
 export default LoadingState;
