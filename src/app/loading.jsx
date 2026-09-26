@@ -3,7 +3,7 @@ import React from 'react';
 const GlobalLoading = () => {
     return (
         <div>
-            Global Loading
+            Global Loading...
         </div>
     );
 };
