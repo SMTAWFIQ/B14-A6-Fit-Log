@@ -1,28 +1,45 @@
 import React from "react";
 import Image from "next/image";
-import { notFound } from "next/navigation";
 import AddToTodaysPlanButton from "../../../Components/workouDetails/AddToTodaysPlanButton";
 import SaveForLaterButton from "../../../Components/workouDetails/SaveForLaterButton";
 
 const getWorkoutData = async (workoutId) => {
-  const res = await fetch(
-    `https://api.abcz.workers.dev/api/fitlog/${workoutId}`,
-  );
+  try {
+    const res = await fetch(
+      `https://api.api-store.workers.dev/api/fitlog/${workoutId}`
+    );
 
-  if (!res.ok) {
-    return null; 
+    if (!res.ok) {
+      return null;
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    return null;
   }
-
-  const data = await res.json();
-  return data;
 };
 
 const WorkoutDetailsPage = async ({ params }) => {
   const { workoutId } = await params;
+
   const workout = await getWorkoutData(workoutId);
 
   if (!workout || workout.error) {
-    notFound(); 
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-white text-2xl font-bold">
+            Error fetching!
+          </h1>
+
+          <p className="text-neutral-400 mt-2">
+            Please try again.
+          </p>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -43,7 +60,9 @@ const WorkoutDetailsPage = async ({ params }) => {
           {workout.name}
         </h1>
 
-        <p className="text-[#9CA3AF] mt-3">{workout.description}</p>
+        <p className="text-[#9CA3AF] mt-3">
+          {workout.description}
+        </p>
 
         {/* Category tags */}
         <div className="flex gap-2 flex-wrap mt-4">
@@ -63,8 +82,14 @@ const WorkoutDetailsPage = async ({ params }) => {
           <SpecRow label="Difficulty" value={workout.difficulty} />
           <SpecRow label="Sets" value={workout.sets} />
           <SpecRow label="Reps" value={workout.reps} />
-          <SpecRow label="Duration" value={`${workout.duration} min`} />
-          <SpecRow label="Calories" value={`${workout.caloriesBurned} kcal`} />
+          <SpecRow
+            label="Duration"
+            value={`${workout.duration} min`}
+          />
+          <SpecRow
+            label="Calories"
+            value={`${workout.caloriesBurned} kcal`}
+          />
           <SpecRow label="Rating" value={workout.rating} />
         </div>
 
@@ -73,10 +98,17 @@ const WorkoutDetailsPage = async ({ params }) => {
           <h2 className="text-white font-bold uppercase text-lg mb-3">
             Instructions
           </h2>
+
           <ol className="space-y-2">
             {workout.instructions.map((step, index) => (
-              <li key={index} className="text-neutral-300 flex gap-2">
-                <span className="text-gray-500 font-semibold">{index + 1}.</span>
+              <li
+                key={index}
+                className="text-neutral-300 flex gap-2"
+              >
+                <span className="text-gray-500 font-semibold">
+                  {index + 1}.
+                </span>
+
                 <span>{step}</span>
               </li>
             ))}
@@ -85,9 +117,9 @@ const WorkoutDetailsPage = async ({ params }) => {
 
         {/* CTA buttons */}
         <div className="flex gap-4 mt-8">
-          <AddToTodaysPlanButton workout={workout}></AddToTodaysPlanButton>
+          <AddToTodaysPlanButton workout={workout} />
 
-          <SaveForLaterButton workout={workout}></SaveForLaterButton>
+          <SaveForLaterButton workout={workout} />
         </div>
       </div>
     </div>
@@ -97,8 +129,13 @@ const WorkoutDetailsPage = async ({ params }) => {
 // Small helper component for one row in the specs table
 const SpecRow = ({ label, value }) => (
   <div className="flex justify-between px-4 py-3">
-    <span className="text-neutral-400 text-sm uppercase">{label}</span>
-    <span className="text-white font-semibold text-sm">{value}</span>
+    <span className="text-neutral-400 text-sm uppercase">
+      {label}
+    </span>
+
+    <span className="text-white font-semibold text-sm">
+      {value}
+    </span>
   </div>
 );
 
