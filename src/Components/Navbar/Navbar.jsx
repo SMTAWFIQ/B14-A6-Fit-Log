@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import logo from "../../../assets/logo.png";
 
@@ -19,10 +18,16 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-base-100 shadow-sm border-b border-base-200">
       <div className="navbar container mx-auto py-3 px-5">
-        {/* Left - Hamburger */}
+
+        {/* Left - Hamburger / Logo */}
         <div className="flex-1">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          {/* Hamburger */}
+          <div className="dropdown lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost"
+            >
               <svg
                 aria-label="Menu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -40,20 +45,28 @@ const Navbar = () => {
               </svg>
             </div>
 
-            <ul
-              tabIndex={-1}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
+            <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow">
               {links}
             </ul>
           </div>
+
+          {/* Logo - Large device */}
+          <div className="hidden lg:flex items-center">
+            <Image src={logo} width={25} height={40} alt="logo" />
+
+            <a className="btn btn-ghost text-xl font-oswald px-1">
+              FITLOG
+            </a>
+          </div>
         </div>
 
-        {/* Middle - Logo */}
-        <div className="flex items-center">
+        {/* Logo - Mobile & Tablet */}
+        <div className="flex lg:hidden items-center">
           <Image src={logo} width={25} height={40} alt="logo" />
 
-          <a className="btn btn-ghost text-xl font-oswald px-1">FITLOG</a>
+          <a className="btn btn-ghost text-xl font-oswald px-1">
+            FITLOG
+          </a>
         </div>
 
         {/* Right - Buttons */}
@@ -64,8 +77,11 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1">
+            {links}
+          </ul>
         </div>
+
       </div>
     </nav>
   );
