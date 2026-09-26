@@ -6,6 +6,7 @@ import { Clock, Flame, Star, X } from 'lucide-react';
 import Sorting from './Sorting';
 import EmptyState from './EmptyState';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 
 const SaveTab = () => {
     const { savedWorkout, setSavedWorkout } = useContext(FitlogContext);
