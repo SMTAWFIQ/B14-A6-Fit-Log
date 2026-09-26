@@ -1,13 +1,18 @@
 import React from "react";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import AddToTodaysPlanButton from "../../../Components/workouDetails/AddToTodaysPlanButton";
 import SaveForLaterButton from "../../../Components/workouDetails/SaveForLaterButton";
-
 
 const getWorkoutData = async (workoutId) => {
   const res = await fetch(
     `https://api.abcz.workers.dev/api/fitlog/${workoutId}`,
   );
+
+  if (!res.ok) {
+    return null; 
+  }
+
   const data = await res.json();
   return data;
 };
@@ -15,6 +20,10 @@ const getWorkoutData = async (workoutId) => {
 const WorkoutDetailsPage = async ({ params }) => {
   const { workoutId } = await params;
   const workout = await getWorkoutData(workoutId);
+
+  if (!workout || workout.error) {
+    notFound(); 
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-2 gap-10">
