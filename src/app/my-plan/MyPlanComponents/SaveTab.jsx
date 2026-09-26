@@ -15,7 +15,11 @@ const SaveTab = () => {
         return [...savedWorkout].sort((a, b) => (a[sortBy] ?? 0) - (b[sortBy] ?? 0));
     }, [savedWorkout, sortBy]);
 
-    const handleRemove = (id) => setSavedWorkout((prev) => prev.filter((w) => w.id !== id));
+    const handleRemove = (id, name) => {
+        setSavedWorkout((prev) => prev.filter((w) => w.id !== id));
+        toast.warning(`${name} removed from your saved plan`)
+    }
+        
 
     return (
         <>
@@ -70,8 +74,8 @@ const SaveTab = () => {
                                     View Details
                                 </Link>
                                 <button
-                                    onClick={() => handleRemove(workout.id)}
-                                    className="text-gray-400 hover:text-white p-1"
+                                    onClick={() => handleRemove(workout.id, workout.name)}
+                                    className="text-gray-400 hover:text-white p-1  hover: cursor-pointer"
                                 >
                                     <X size={18} />
                                 </button>

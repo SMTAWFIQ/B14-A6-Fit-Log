@@ -39,15 +39,15 @@ const MyPlanPage = () => {
             <div className="mt-6 bg-[#111214] border border-white/10 rounded-full p-1 flex gap-1 w-fit">
                 <button
                     onClick={() => setActiveTab('today')}
-                    className={`px-4 py-2 rounded-full text-sm transition ${
-                        activeTab === 'today' ? 'bg-[#1c1e22] text-white font-semibold' : 'text-gray-400'
+                    className={` hover: cursor-pointer px-4 py-2 rounded-full text-sm transition ${
+                        activeTab === 'today' ? 'bg-[#1c1e22] text-white font-semibold ' : 'text-gray-400'
                     }`}
                 >
                     Today's Plan
                 </button>
                 <button
                     onClick={() => setActiveTab('saved')}
-                    className={`px-4 py-2 rounded-full text-sm transition ${
+                    className={` hover: cursor-pointer px-4 py-2 rounded-full text-sm transition ${
                         activeTab === 'saved' ? 'bg-[#1c1e22] text-white font-semibold' : 'text-gray-400'
                     }`}
                 >

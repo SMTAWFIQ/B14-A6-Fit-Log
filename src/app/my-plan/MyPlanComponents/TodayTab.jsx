@@ -17,8 +17,9 @@ const TodayTab = () => {
     return [...myPlan].sort((a, b) => (a[sortBy] ?? 0) - (b[sortBy] ?? 0));
   }, [myPlan, sortBy]);
 
-  const handleRemove = (id) => {
+  const handleRemove = (id, name) => {
     setMyPlan((prev) => prev.filter((w) => w.id !== id));
+    toast.warning(`${name} removed from your plan`)
   };
 
   const handleDone = (id, name) => {
@@ -83,13 +84,13 @@ const TodayTab = () => {
                   <button
                     onClick={() => handleDone(workout.id, workout.name)}
                     disabled={isDone}
-                    className="px-4 py-2 rounded-full bg-lime-400 text-black text-sm font-semibold flex items-center gap-1 hover:bg-lime-300 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    className=" hover: cursor-pointer px-4 py-2 rounded-full bg-lime-400 text-black text-sm font-semibold flex items-center gap-1 hover:bg-lime-300 transition disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Check size={14} /> {isDone ? "Done" : "Mark as Done"}
                   </button>
                   <button
-                    onClick={() => handleRemove(workout.id)}
-                    className="text-gray-400 hover:text-white p-1"
+                    onClick={() => handleRemove(workout.id, workout.name )}
+                    className="text-gray-400 hover:text-white p-1 hover: cursor-pointer"
                   >
                     <X size={18} />
                   </button>
