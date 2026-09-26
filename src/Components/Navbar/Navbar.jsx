@@ -19,7 +19,8 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-base-100 shadow-sm border-b border-base-200">
       <div className="navbar container mx-auto py-3 px-5">
-        <div className="navbar-start">
+        {/* Left - Hamburger */}
+        <div className="flex-1">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -46,24 +47,24 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-
-          <div className="flex items-center">
-            <Image src={logo} width={25} height={40} alt="logo" />
-            <a className="btn btn-ghost text-xl font-oswald px-1">
-              FITLOG
-            </a>
-          </div>
         </div>
 
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {links}
-          </ul>
+        {/* Middle - Logo */}
+        <div className="flex items-center">
+          <Image src={logo} width={25} height={40} alt="logo" />
+
+          <a className="btn btn-ghost text-xl font-oswald px-1">FITLOG</a>
         </div>
 
-        <div className="flex items-center gap-4 navbar-end">
+        {/* Right - Buttons */}
+        <div className="flex-1 flex justify-end items-center gap-2">
           <PlanButton />
           <SaveButton />
+        </div>
+
+        {/* Desktop Links */}
+        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2">
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
       </div>
     </nav>
