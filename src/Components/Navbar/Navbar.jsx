@@ -5,17 +5,15 @@ import logo from "../../../assets/logo.png";
 
 import PlanButton from "./PlanButton";
 import SaveButton from "./SaveButton";
+import WorkoutLink from "./WorkoutLink";
+import MyPlanLink from "./MyPlanLink";
 
 const Navbar = () => {
   
   const links = (
     <>
-      <li>
-        <Link href="/">Workouts</Link>
-      </li>
-      <li>
-        <Link href="/my-plan">My Plan</Link>
-      </li>
+      <WorkoutLink></WorkoutLink>
+      <MyPlanLink></MyPlanLink>
     </>
   );
   return (

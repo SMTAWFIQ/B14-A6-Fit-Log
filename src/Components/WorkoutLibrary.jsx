@@ -1,6 +1,6 @@
 import React from "react";
 import WorkoutCard from "./WorkoutCard";
-import Link from "next/link";
+
 
 const getWorkoutData = async () => {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
@@ -13,7 +13,7 @@ const WorkoutLibrary = async () => {
   console.log(workoutData);
 
   return (
-    <section className="container mx-auto py-3 px-5 mt-12  ">
+    <section id="library" className="container mx-auto py-3 px-5 mt-12">
       <h2 className="font-oswald text-3xl font-bold">The Library</h2>
       <p className="text-sm text-[#9CA3AF] mt-2 mb-9">
         Twelve lifts covering every major muscle group.

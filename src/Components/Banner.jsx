@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import bannerimage from '../../assets/banner.png';
 
+
 const Banner = () => {
   return (
     <div className="container mx-auto py-3 px-5 mt-5 ">
@@ -13,8 +14,12 @@ const Banner = () => {
           FitLog is a dark, no-nonsense gym companion: pick a lift, lock it <br />into
           todays plan, and watch the weeks work add up.
         </p>
-        <button className="mt-2 btn bg-custom text-black rounded-xl">BROWSE WORKOUT</button>
-      </div>
+<a href="#library">
+  <button className="mt-2 btn bg-custom text-black rounded-xl flex items-center gap-2">
+    BROWSE WORKOUTS
+    
+  </button>
+</a>      </div>
 
       <div>
         <Image src={bannerimage} alt="Banner Image"></Image>
