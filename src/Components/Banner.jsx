@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import bannerimage from "../../assets/banner.png";
+import { ChevronRight } from "lucide-react";
 const Banner = () => {
   return (
     <div className="container mx-auto py-3 px-5 mt-5">
@@ -27,8 +28,8 @@ const Banner = () => {
           <a href="#library">
              
             <button className=" mt-2 btn bg-custom text-black rounded-xl flex items-center gap-2">
-               
               BROWSE WORKOUTS 
+              <ChevronRight size={16} />
             </button> 
           </a> 
         </div> 

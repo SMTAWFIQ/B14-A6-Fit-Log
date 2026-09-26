@@ -46,16 +46,16 @@ const SaveTab = () => {
                                     </h3>
                                     <p className="text-gray-400 text-xs mt-0.5">{workout.category}</p>
                                     <div className="flex items-center gap-4 mt-2 text-xs text-gray-300">
-                                        <span className="flex items-center gap-1">
-                                            <Clock size={14} />
+                                        <span className="flex justify-center gap-1">
+                                            <Clock size={14} className="text-custom" />
                                             {workout.duration} min
                                         </span>
-                                        <span className="flex items-center gap-1">
+                                        <span className="flex justify-center gap-1">
                                             <Flame size={14} className="text-orange-500" />
                                             {workout.caloriesBurned} kcal
                                         </span>
-                                        <span className="flex items-center gap-1">
-                                            <Star size={14} className="text-yellow-400 fill-yellow-400" />
+                                        <span className="flex justify-center gap-1">
+                                            <Star size={14} className="text-yellow-400 " />
                                             {workout.rating}
                                         </span>
                                     </div>

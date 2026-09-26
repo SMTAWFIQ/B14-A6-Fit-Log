@@ -67,7 +67,7 @@ const WorkoutDetailsPage = async ({ params }) => {
           <ol className="space-y-2">
             {workout.instructions.map((step, index) => (
               <li key={index} className="text-neutral-300 flex gap-2">
-                <span className="text-accent font-bold">{index + 1}.</span>
+                <span className="text-gray-500 font-semibold">{index + 1}.</span>
                 <span>{step}</span>
               </li>
             ))}

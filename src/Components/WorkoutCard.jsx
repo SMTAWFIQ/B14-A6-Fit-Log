@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Clock, ThumbsUp, Star } from "lucide-react";
+import { Clock, Star, Flame } from "lucide-react";
 import Image from "next/image";
 
 const WorkoutCard = ({ workout }) => {
@@ -43,17 +43,17 @@ const WorkoutCard = ({ workout }) => {
             {/* Stats row */}
             <div className="flex items-center gap-4 text-neutral-300 text-sm">
               <div className="flex items-center gap-1">
-                <Clock size={16} />
+                <Clock size={16} className="text-custom" />
                 <span>{workout.duration} min</span>
               </div>
 
-              <div className="flex items-center gap-1">
-                <ThumbsUp size={16} />
+              <div className="flex justify-center gap-1">
+                <Flame size={16} className="text-orange-500" />
                 <span>{workout.caloriesBurned} kcal</span>
               </div>
 
-              <div className="flex items-center gap-1">
-                <Star size={16} />
+              <div className="flex justify-center  gap-1">
+                <Star size={16} className="text-yellow-400 " />
                 <span>{workout.rating}</span>
               </div>
             </div>
